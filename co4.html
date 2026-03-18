@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CO4 – DOM & Events | WebDev Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-icon">⬡</span>WebDev<span class="brand-hi">Course</span>
+    </a>
+    <div class="d-flex align-items-center gap-2 ms-auto order-lg-last">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+      <button class="navbar-toggler ham-btn" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Menu">
+        <span class="hb"></span><span class="hb"></span><span class="hb"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 py-2 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">← Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="co1.html">CO1</a></li>
+        <li class="nav-item"><a class="nav-link" href="co2.html">CO2</a></li>
+        <li class="nav-item"><a class="nav-link" href="co3.html">CO3</a></li>
+        <li class="nav-item"><a class="nav-link nav-active" href="co4.html">CO4</a></li>
+        <li class="nav-item"><a class="nav-link" href="co5.html">CO5</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+  <div class="container">
+
+    <div class="co-head-block">
+      <div class="co-num" style="font-family:'Fira Code';color:var(--accent);font-size:.8rem;margin-bottom:.5rem;">CO — 04</div>
+      <h2>DOM &amp; Events</h2>
+      <p>Manipulate the Document Object Model, handle user events, work with forms, and build dynamic interactive web pages.</p>
+      <div class="tags mt-2"><span class="tag">DOM</span><span class="tag">Events</span><span class="tag">Forms</span><span class="tag">Manipulation</span></div>
+    </div>
+
+    <div class="topic-body">
+
+      <div class="concept">
+        <h4>🌳 What is the DOM?</h4>
+        <p>The Document Object Model (DOM) is a tree-structured representation of the HTML document. JavaScript can read and modify the DOM to dynamically change content, structure, and styles without reloading the page.</p>
+        <pre>document          ← root
+ └─ html
+     ├─ head
+     │   └─ title → "My Page"
+     └─ body
+         ├─ h1 → "Hello"
+         └─ p  → "World"</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🔍 Selecting Elements</h4>
+        <p>Use modern querySelector methods to select DOM elements. getElementById is fast for single elements by ID. querySelectorAll returns a NodeList of all matching elements.</p>
+        <pre>// Single element
+document.getElementById('myId');
+document.querySelector('.class');
+document.querySelector('#id');
+
+// Multiple elements
+document.querySelectorAll('.cards');
+document.querySelectorAll('li');
+
+// Navigate from element
+el.parentElement;
+el.children;
+el.nextElementSibling;</pre>
+      </div>
+
+      <div class="concept">
+        <h4>✏️ Modifying the DOM</h4>
+        <p>Once you select an element, you can change its text, HTML, attributes, styles, and CSS classes. Creating and appending new elements allows fully dynamic content generation.</p>
+        <pre>const el = document.querySelector('#box');
+
+// Change content
+el.textContent = "New text";
+el.innerHTML = "&lt;strong&gt;Bold&lt;/strong&gt;";
+
+// Modify styles & classes
+el.style.color = "red";
+el.classList.add('active');
+el.classList.toggle('hidden');
+
+// Create & append new element
+const p = document.createElement('p');
+p.textContent = "New paragraph";
+document.body.appendChild(p);</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🖱️ Event Listeners</h4>
+        <p>Events allow JavaScript to respond to user actions like clicks, key presses, mouse movements, and form submissions. addEventListener is the modern way to attach events.</p>
+        <pre>const btn = document.querySelector('#myBtn');
+
+// Click event
+btn.addEventListener('click', function(e) {
+  console.log('Clicked!', e.target);
+});
+
+// Arrow function
+btn.addEventListener('click', (e) => {
+  e.preventDefault();     // stop default behavior
+  e.stopPropagation();    // stop bubbling
+});
+
+// Keyboard event
+document.addEventListener('keydown', (e) => {
+  console.log(e.key, e.code);
+});</pre>
+      </div>
+
+      <div class="concept">
+        <h4>📝 Form Handling</h4>
+        <p>Access form values, validate inputs, and handle submission with JavaScript. Prevent default form submission to handle data with JavaScript instead of reloading the page.</p>
+        <pre>const form = document.querySelector('#myForm');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();  // stop page reload
+
+  const name  = document.querySelector('#name').value.trim();
+  const email = document.querySelector('#email').value.trim();
+
+  if (!name) {
+    showError('#name', 'Name is required');
+    return;
+  }
+
+  console.log({ name, email });  // process data
+});</pre>
+      </div>
+
+      <div class="concept">
+        <h4>💫 Event Delegation</h4>
+        <p>Instead of adding event listeners to many elements, use event delegation: listen on a parent element and check which child was clicked. This is more efficient and works with dynamically added elements.</p>
+        <pre>// ❌ Adding to each item (inefficient)
+items.forEach(item => item.addEventListener('click', handler));
+
+// ✅ Event Delegation (efficient)
+document.querySelector('#list').addEventListener('click', (e) => {
+  if (e.target.matches('.list-item')) {
+    console.log('Item clicked:', e.target.textContent);
+  }
+  if (e.target.matches('.delete-btn')) {
+    e.target.closest('.list-item').remove();
+  }
+});</pre>
+      </div>
+
+    </div>
+
+    <div class="co-nav-btns">
+      <a href="co3.html" class="co-nav-btn">← CO3: JavaScript</a>
+      <a href="co5.html" class="co-nav-btn">Next: CO5 – APIs & Deployment →</a>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-prog" id="scrollProg"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

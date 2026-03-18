@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CO1 – Internet & Web Basics | WebDev Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-icon">⬡</span>WebDev<span class="brand-hi">Course</span>
+    </a>
+    <div class="d-flex align-items-center gap-2 ms-auto order-lg-last">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+      <button class="navbar-toggler ham-btn" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Menu">
+        <span class="hb"></span><span class="hb"></span><span class="hb"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 py-2 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">← Home</a></li>
+        <li class="nav-item"><a class="nav-link nav-active" href="co1.html">CO1</a></li>
+        <li class="nav-item"><a class="nav-link" href="co2.html">CO2</a></li>
+        <li class="nav-item"><a class="nav-link" href="co3.html">CO3</a></li>
+        <li class="nav-item"><a class="nav-link" href="co4.html">CO4</a></li>
+        <li class="nav-item"><a class="nav-link" href="co5.html">CO5</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+  <div class="container">
+
+    <!-- Header -->
+    <div class="co-head-block">
+      <div class="co-num" style="font-family:'Fira Code';color:var(--accent);font-size:.8rem;margin-bottom:.5rem;">CO — 01</div>
+      <h2>Internet &amp; Web Basics</h2>
+      <p>Understand how the internet works, HTTP/HTTPS protocols, DNS resolution, browsers, and the client-server model.</p>
+      <div class="tags mt-2"><span class="tag">HTTP</span><span class="tag">DNS</span><span class="tag">Protocols</span><span class="tag">Browsers</span></div>
+    </div>
+
+    <div class="topic-body">
+
+      <div class="concept">
+        <h4>📡 What is the Internet?</h4>
+        <p>The Internet is a global network of computers connected using standardized communication protocols. It was originally developed as ARPANET in the late 1960s. Data travels in small packets through routers and switches across physical cables, fiber optics, and wireless signals.</p>
+        <pre>User → ISP → Backbone Network → Destination Server
+Data travels as packets, reassembled at destination.</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🌐 HTTP vs HTTPS</h4>
+        <p>HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web. HTTPS adds TLS/SSL encryption for secure data transfer. Always prefer HTTPS for any website that handles user data.</p>
+        <pre>HTTP  → Port 80  → Unencrypted (plain text)
+HTTPS → Port 443 → Encrypted with TLS/SSL
+
+GET /index.html HTTP/1.1
+Host: www.example.com
+Accept: text/html</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🔍 DNS – Domain Name System</h4>
+        <p>DNS translates human-readable domain names (like google.com) into IP addresses (like 142.250.67.46) that computers use to identify each other. It acts like a phonebook for the internet.</p>
+        <pre>Browser → DNS Resolver → Root Server → TLD Server
+       → Authoritative Server → Returns IP Address
+       → Browser connects to IP</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🔄 Client-Server Model</h4>
+        <p>The web operates on a client-server architecture. The client (browser) sends requests, and the server responds with resources. REST APIs follow this model using HTTP verbs.</p>
+        <pre>Client (Browser)          Server
+    |                         |
+    |--- GET /page.html ----→ |
+    |                         |
+    |←-- 200 OK + HTML -----  |
+    |                         |
+    |--- POST /login -------→ |
+    |←-- 302 Redirect ------  |</pre>
+      </div>
+
+      <div class="concept">
+        <h4>📦 HTTP Status Codes</h4>
+        <p>Servers communicate the result of a request using status codes. Understanding these is essential for debugging web applications.</p>
+        <pre>1xx → Informational   (100 Continue)
+2xx → Success         (200 OK, 201 Created)
+3xx → Redirection     (301 Moved, 302 Found)
+4xx → Client Errors   (404 Not Found, 403 Forbidden)
+5xx → Server Errors   (500 Internal Server Error)</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🏗️ How a Browser Works</h4>
+        <p>When you type a URL, the browser: resolves DNS, opens a TCP connection, sends an HTTP request, receives a response, then parses HTML → builds DOM → applies CSS → executes JS → renders the page.</p>
+        <pre>URL Typed
+  → DNS Lookup (IP resolved)
+  → TCP Handshake (3-way)
+  → HTTP Request sent
+  → Server responds with HTML
+  → Browser parses DOM
+  → Loads CSS, JS, Images
+  → Page is rendered</pre>
+      </div>
+
+    </div>
+
+    <!-- Navigation between COs -->
+    <div class="co-nav-btns">
+      <span></span>
+      <a href="co2.html" class="co-nav-btn">Next: CO2 – HTML & CSS →</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="scroll-prog" id="scrollProg"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

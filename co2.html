@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>CO2 – HTML & CSS | WebDev Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container-fluid px-3 px-lg-4">
+    <a class="navbar-brand" href="index.html">
+      <span class="brand-icon">⬡</span>WebDev<span class="brand-hi">Course</span>
+    </a>
+    <div class="d-flex align-items-center gap-2 ms-auto order-lg-last">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">🌙</button>
+      <button class="navbar-toggler ham-btn" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Menu">
+        <span class="hb"></span><span class="hb"></span><span class="hb"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 py-2 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">← Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="co1.html">CO1</a></li>
+        <li class="nav-item"><a class="nav-link nav-active" href="co2.html">CO2</a></li>
+        <li class="nav-item"><a class="nav-link" href="co3.html">CO3</a></li>
+        <li class="nav-item"><a class="nav-link" href="co4.html">CO4</a></li>
+        <li class="nav-item"><a class="nav-link" href="co5.html">CO5</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="page active">
+  <div class="container">
+
+    <div class="co-head-block">
+      <div class="co-num" style="font-family:'Fira Code';color:var(--accent);font-size:.8rem;margin-bottom:.5rem;">CO — 02</div>
+      <h2>HTML &amp; CSS Fundamentals</h2>
+      <p>Build semantic HTML pages and style them with CSS including Flexbox, Grid, animations and responsive design.</p>
+      <div class="tags mt-2"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Flexbox</span><span class="tag">Grid</span><span class="tag">Responsive</span></div>
+    </div>
+
+    <div class="topic-body">
+
+      <div class="concept">
+        <h4>📄 HTML Document Structure</h4>
+        <p>Every HTML page follows a standard structure with a DOCTYPE declaration, html, head, and body elements. Semantic HTML5 elements like header, nav, main, section, article, and footer improve accessibility and SEO.</p>
+        <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"/&gt;
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1"/&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;&lt;nav&gt;...&lt;/nav&gt;&lt;/header&gt;
+    &lt;main&gt;&lt;section&gt;...&lt;/section&gt;&lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+      </div>
+
+      <div class="concept">
+        <h4>🎨 CSS Selectors & Specificity</h4>
+        <p>CSS selectors target HTML elements. Specificity determines which rule wins when multiple rules apply. Inline styles beat IDs beat classes beat elements.</p>
+        <pre>/* Element selector — low specificity */
+p { color: gray; }
+
+/* Class selector */
+.highlight { color: blue; }
+
+/* ID selector — high specificity */
+#hero { font-size: 2rem; }
+
+/* Specificity: inline > ID > class > element */
+/* 1000    >  100 >  10   >    1   */</pre>
+      </div>
+
+      <div class="concept">
+        <h4>📦 Box Model</h4>
+        <p>Every HTML element is a box composed of: content, padding, border, and margin. Use <code>box-sizing: border-box</code> to include padding and border in the element's total width/height.</p>
+        <pre>/* Box Model */
+.box {
+  width: 200px;         /* content width */
+  padding: 20px;        /* inner space */
+  border: 2px solid;    /* border thickness */
+  margin: 16px;         /* outer space */
+  box-sizing: border-box; /* width includes padding+border */
+}</pre>
+      </div>
+
+      <div class="concept">
+        <h4>↔️ Flexbox Layout</h4>
+        <p>Flexbox is a one-dimensional layout system for arranging items in rows or columns. It's perfect for navigation bars, cards, and centering elements.</p>
+        <pre>.container {
+  display: flex;
+  justify-content: space-between;  /* horizontal alignment */
+  align-items: center;             /* vertical alignment */
+  gap: 16px;                       /* space between items */
+  flex-wrap: wrap;                 /* wrap to next line */
+}
+
+.item {
+  flex: 1;        /* grow equally */
+  flex: 0 0 30%;  /* fixed 30% width */
+}</pre>
+      </div>
+
+      <div class="concept">
+        <h4>⊞ CSS Grid Layout</h4>
+        <p>CSS Grid is a two-dimensional layout system for complex page layouts. Define rows and columns explicitly and place items anywhere in the grid.</p>
+        <pre>.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal cols */
+  grid-template-rows: auto;
+  gap: 24px;
+}
+
+/* Responsive grid */
+.grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}</pre>
+      </div>
+
+      <div class="concept">
+        <h4>📱 Responsive Design</h4>
+        <p>Responsive design adapts layouts to different screen sizes using media queries, relative units (%, em, rem, vw), and mobile-first approach.</p>
+        <pre>/* Mobile first */
+.hero { font-size: 1.5rem; }
+
+/* Tablet */
+@media (min-width: 768px) {
+  .hero { font-size: 2.5rem; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero { font-size: 4rem; }
+}</pre>
+      </div>
+
+    </div>
+
+    <div class="co-nav-btns">
+      <a href="co1.html" class="co-nav-btn">← CO1: Internet Basics</a>
+      <a href="co3.html" class="co-nav-btn">Next: CO3 – JavaScript →</a>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-prog" id="scrollProg"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
